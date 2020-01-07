@@ -10,17 +10,25 @@
 #include <nana/gui/widgets/group.hpp>
 #include <nana/gui/drawing.hpp>
 
+#include "ExternalGroup.h"
 using namespace nana;
 
-class Mainboard : public form {
+class Mainboard : public ExternalGroup {
     public:
         Mainboard();
+        void leftGroup_config();
+        void rightGroup_config();
+        void run();
         virtual ~Mainboard();
 
     protected:
 
     private:
-        place plc {*this};
+        group leftgrp  {this->extgrp, ("A new <bold=true, color=0xff0000,"
+                             "font=\"Consolas\">Group</>"), true};
+        group rightgrp {this->extgrp, ("A right <bold=true, color=0xff0000,"
+                             "font=\"Consolas\">Group</>"), true};
+
 };
 
 #endif // MAINBOARD_H

@@ -30,8 +30,9 @@ using namespace nana;
 
 void init() {
     Mainboard mb;
-    mb.show();
-    exec();
+    mb.leftGroup_config();
+    mb.rightGroup_config();
+    mb.run();
 }
 
 int main() {
