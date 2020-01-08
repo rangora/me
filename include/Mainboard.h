@@ -11,6 +11,7 @@
 #include <nana/gui/drawing.hpp>
 
 #include "ExternalGroup.h"
+
 using namespace nana;
 
 class Mainboard : public ExternalGroup {
@@ -21,13 +22,15 @@ class Mainboard : public ExternalGroup {
         void run();
         virtual ~Mainboard();
 
-    protected:
 
-    private:
-        group leftgrp  {this->extgrp, ("A new <bold=true, color=0xff0000,"
-                             "font=\"Consolas\">Group</>"), true};
+    protected:
         group rightgrp {this->extgrp, ("A right <bold=true, color=0xff0000,"
                              "font=\"Consolas\">Group</>"), true};
+        group leftgrp  {this->extgrp, ("A new <bold=true, color=0xff0000,"
+                             "font=\"Consolas\">Group</>"), true};
+
+    private:
+
 
 };
 

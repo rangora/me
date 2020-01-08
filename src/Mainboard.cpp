@@ -12,24 +12,7 @@ void Mainboard::leftGroup_config() {
 }
 
 void Mainboard::rightGroup_config() {
-    group nested(rightgrp.handle());
-    label lab {rightgrp, "A simple right "};
-    button b1 {rightgrp, "button1"};
-    button b2 {rightgrp, "button2"};
-    button b3 {rightgrp, "button3"};
-
-    b1.events().click([] {
-        printf("yes\n");
-    });
-
     rightgrp.div("<vertical margin=2 gap=2 <vert lab> | 40% < <left_field> | 70% <right_field>> >");
-    rightgrp["lab"] << lab.text_align(align::right) << nested;
-    rightgrp["left_field"] << b1;
-    rightgrp["right_field"] << b2 << b3;
-
-    label lab1{nested, "A very simple group:"};
-    nested.div("margin=3 min=30 gap=2 all");
-    nested["all"] << lab1;
 };
 
 void Mainboard::run() {
