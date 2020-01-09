@@ -9,25 +9,35 @@
 #include <nana/gui/widgets/label.hpp>
 #include <nana/gui/widgets/group.hpp>
 #include <nana/gui/drawing.hpp>
+#include <nana/gui/widgets/picture.hpp>
 
 #include "ExternalGroup.h"
+
 using namespace nana;
 
 class Mainboard : public ExternalGroup {
     public:
         Mainboard();
-        void leftGroup_config();
-        void rightGroup_config();
-        void run();
         virtual ~Mainboard();
+        void run();
+
 
     protected:
+        group rightgrp {extgrp, ("A right <bold=true, color=0xff0000,"
+                             "font=\"Consolas\">Group</>"), true};
+        group leftgrp  {extgrp, ("A new <bold=true, color=0xff0000,"
+                             "font=\"Consolas\">Group</>"), true};
 
     private:
-        group leftgrp  {this->extgrp, ("A new <bold=true, color=0xff0000,"
-                             "font=\"Consolas\">Group</>"), true};
-        group rightgrp {this->extgrp, ("A right <bold=true, color=0xff0000,"
-                             "font=\"Consolas\">Group</>"), true};
+        // field
+        label* lab;
+        button* b1;
+        button* b2;
+        button* b3;
+
+        // func
+        void leftGroup_config();
+        void rightGroup_config();
 
 };
 

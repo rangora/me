@@ -22,18 +22,21 @@
 #include <nana/gui/tooltip.hpp>
 #include <nana/filesystem/filesystem_ext.hpp>
 
-#include "include/Mainboard.h"
-
+//#include "include/Mainboard.h"
+#include "include/MapleGUI.h"
 
 using namespace std;
 using namespace nana;
 
 void init() {
-    Mainboard mb;
-    mb.leftGroup_config();
-    mb.rightGroup_config();
-    mb.run();
+//    Mainboard mb;
+//    mb.leftGroup_config();
+//    mb.rightGroup_config();
+//    mb.run();
+    MapleGUI gui;
+    gui.go();
 }
+
 
 int main() {
     init();
