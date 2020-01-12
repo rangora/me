@@ -1,4 +1,4 @@
-#include "ExternalGroup.h"
+#include "../include/ExternalGroup.h"
 
 ExternalGroup::ExternalGroup() {
     mainform.caption("Me");

@@ -1,4 +1,4 @@
-#include "MapleGUI.h"
+#include "../include/MapleGUI.h"
 
 MapleGUI::MapleGUI() {
     //ctor

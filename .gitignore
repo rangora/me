@@ -1,5 +1,13 @@
+#linux
 bin/
 maple.cbp
 maple.depend
 maple.layout
 obj
+
+#window
+
+.vs
+Debug
+me.sln
+me
