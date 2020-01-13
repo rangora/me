@@ -3,7 +3,12 @@
 
 #include <memory>
 #include <iostream>
+#include <array>
+#include <string>
+#include <typeinfo>
 #include "Mainboard.h"
+
+#define SYMBOL_SIZE 6
 
 using namespace nana;
 using namespace std;
@@ -15,12 +20,12 @@ class NestedGroups : public Mainboard {
         void symbolGroups();
 
     protected:
-        group nested1 {rightgrp.handle()};
+        group symbolGrp {rightgrp.handle()};
         group nested2 {rightgrp.handle()};
         group nested3 {rightgrp.handle()};
 
-        place symbol{ mainform };
-        vector<shared_ptr<button>> btns;
+        //vector<shared_ptr<picture>> symbols;
+        vector<picture*> symbols;
 
     private:
         // returns the handle of window... (from parent widget class)
@@ -30,6 +35,22 @@ class NestedGroups : public Mainboard {
         button* b1;
         button* b2;
         button* b3;
+
+        button* allSym;
+        array<string, SYMBOL_SIZE> symbol_be_path { "..\\..\\resource\\symbol\\road_be.png",
+                                                    "..\\..\\resource\\symbol\\chew_be.png",
+                                                    "..\\..\\resource\\symbol\\lacheln.png",
+                                                    "..\\..\\resource\\symbol\\arcana.png",
+                                                    "..\\..\\resource\\symbol\\esfera.png",
+                                                    "..\\..\\resource\\symbol\\morass.png"};
+
+        array<string, SYMBOL_SIZE> symbol_af_path{ "..\\..\\resource\\symbol\\road_af.png",
+                                                    "..\\..\\resource\\symbol\\chew_af.png",
+                                                    "..\\..\\resource\\symbol\\lacheln.png",
+                                                    "..\\..\\resource\\symbol\\arcana.png",
+                                                    "..\\..\\resource\\symbol\\esfera.png",
+                                                    "..\\..\\resource\\symbol\\morass.png" };
+        
 };
 
 #endif // NESTEDGROUPS_H

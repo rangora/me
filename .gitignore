@@ -6,7 +6,7 @@ maple.layout
 obj
 
 #window
-
+.gitattributes
 .vs
 Debug
 me.sln

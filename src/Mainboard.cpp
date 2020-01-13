@@ -10,7 +10,7 @@ Mainboard::Mainboard() {
     b3 = new button{rightgrp, "button3"};
 
     // Nana does not support ICON under Linux now
-    b1->icon(paint::image("..\\resource\\symbol\\arcana.png"));
+    b1->icon(paint::image("..\\..\\resource\\symbol\\arcana.png"));
 
     extgrp.div("horizontal gap=3 margin=20 < <left_field> | 70% <right_field>>");
     extgrp["left_field"] << leftgrp;
