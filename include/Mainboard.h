@@ -23,10 +23,10 @@ class Mainboard : public ExternalGroup {
 
 
     protected:
-        group rightgrp {extgrp, ("A right <bold=true, color=0xff0000,"
-                             "font=\"Consolas\">Group</>"), true};
-        group leftgrp  {extgrp, ("A new <bold=true, color=0xff0000,"
-                             "font=\"Consolas\">Group</>"), true};
+        group rightgrp {extgrp, ("<bold=true, color=0xff0000,"
+                             "font=\"Consolas\">Daily</>"), true};
+        group leftgrp  {extgrp, ("<bold=true, color=0xff0000,"
+                             "font=\"Consolas\">Charater</>"), true};
 
     private:
         // field

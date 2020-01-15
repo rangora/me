@@ -5,12 +5,11 @@ Mainboard::Mainboard() {
     lab = new label{rightgrp, "A simple right group"};
 
     b1 = new button{rightgrp, ("Button with An Image")};
-//    b1 = new button{rightgrp, "button1"};
     b2 = new button{rightgrp, "button2"};
     b3 = new button{rightgrp, "button3"};
 
     // Nana does not support ICON under Linux now
-    b1->icon(paint::image("..\\..\\resource\\symbol\\arcana.png"));
+    b1->icon(paint::image("..\\resource\\symbol\\arcana.png"));
 
     extgrp.div("horizontal gap=3 margin=20 < <left_field> | 70% <right_field>>");
     extgrp["left_field"] << leftgrp;

@@ -22,39 +22,51 @@ class NestedGroups : public Mainboard {
         void symbolGroups();
         void bossGroups();
         void caculation();
+        void showAll();
 
     protected:
         group symbolGrp {rightgrp.handle()};
         group bossGrp {rightgrp.handle()};
         group caculated{ rightgrp.handle() };
-        group nested3 {rightgrp.handle()};
+        //group nested3 {rightgrp.handle()};
 
         vector<picture*> symbols;
         vector<picture*> bosses;
 
     private:
         int bossClear[BOSSES_SIZE] {};
-        label* lab1;
-        label* lab2;
-        label* lab3;
-        button* b1;
-        button* b2;
-        button* b3;
+        int bossResult[BOSSES_SIZE]{1000, 2000, 3000, 4000, 5000, 6000};
+
+        label* amount;
         button* allSym;
         button* allBoss;
         array<string, SYMBOL_SIZE> symbol_be_path { "..\\resource\\symbol\\road_be.png",
-                                                    "..\\..\\resource\\symbol\\chew_be.png",
-                                                    "..\\..\\resource\\symbol\\lacheln.png",
-                                                    "..\\..\\resource\\symbol\\arcana.png",
-                                                    "..\\..\\resource\\symbol\\esfera.png",
-                                                    "..\\..\\resource\\symbol\\morass.png"};
+                                                    "..\\resource\\symbol\\chew_be.png",
+                                                    "..\\resource\\symbol\\lacheln.png",
+                                                    "..\\resource\\symbol\\arcana.png",
+                                                    "..\\resource\\symbol\\esfera.png",
+                                                    "..\\resource\\symbol\\morass.png"};
 
         array<string, SYMBOL_SIZE> symbol_af_path { "..\\resource\\symbol\\road_af.png",
-                                                    "..\\..\\resource\\symbol\\chew_af.png",
-                                                    "..\\..\\resource\\symbol\\lacheln.png",
-                                                    "..\\..\\resource\\symbol\\arcana.png",
-                                                    "..\\..\\resource\\symbol\\esfera.png",
-                                                    "..\\..\\resource\\symbol\\morass.png" };
+                                                    "..\\resource\\symbol\\chew_af.png",
+                                                    "..\\resource\\symbol\\lacheln.png",
+                                                    "..\\resource\\symbol\\arcana.png",
+                                                    "..\\resource\\symbol\\esfera.png",
+                                                    "..\\resource\\symbol\\morass.png" };
+
+        array<string, BOSSES_SIZE> boss_be_path{ "..\\resource\\boss\\hilla.png",
+                                                    "..\\resource\\boss\\horntail.png",
+                                                    "..\\resource\\boss\\kaung.png",
+                                                    "..\\resource\\boss\\magnus.png",
+                                                    "..\\resource\\boss\\zaqqum.png",
+                                                    "..\\resource\\boss\\zaqqum.png" };
+
+        array<string, BOSSES_SIZE> boss_af_path{ "..\\resource\\boss\\hilla.png",
+                                                    "..\\resource\\boss\\horntail.png",
+                                                    "..\\resource\\boss\\kaung.png",
+                                                    "..\\resource\\boss\\magnus.png",
+                                                    "..\\resource\\boss\\zaqqum.png",
+                                                    "..\\resource\\boss\\zaqqum.png" };
         
 };
 

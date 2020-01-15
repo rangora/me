@@ -1,20 +1,11 @@
 #include "../include/NestedGroups.h"
 
 NestedGroups::NestedGroups() {
-    lab3 = new label{nested3, "A simple nested group_03:"};
-    b3 = new button{nested3, "button6"};
 
     symbolGroups();
     bossGroups();
-    
-    // symbol   
-    nested3.div( " margin=3 min=30 gap= 2 all");
-      
-    
-    nested3["all"] << *lab3 << *b3;
-    
-    
-    rightgrp["nested3"] << nested3;
+    showAll();
+
 }
 
 void NestedGroups::symbolGroups() {
@@ -48,20 +39,21 @@ void NestedGroups::bossGroups() {
 
     for (auto i = 0; i < SYMBOL_SIZE; i++) {
         bosses.emplace_back(new picture{ bossGrp });
-        bosses.back()->load(paint::image(symbol_be_path[i]));
+        bosses.back()->load(paint::image(boss_be_path[i]));
         bossGrp["symbol"] << (*bosses.back());      
     }
 
     // click events.. //
     bosses[0]->events().click([&]() {
         if (!bossClear[0]) {
-            bosses[0]->load(paint::image(symbol_af_path[0]));
+            bosses[0]->load(paint::image(boss_af_path[0]));
             bossClear[0] = 1;
         }
         else {
-            bosses[0]->load(paint::image(symbol_be_path[0]));
+            bosses[0]->load(paint::image(boss_be_path[0]));
             bossClear[0] = 0;
         }
+        caculation();
         rightgrp.collocate();
         });
     /******************/
@@ -69,8 +61,9 @@ void NestedGroups::bossGroups() {
     // all clear.. //
     allBoss->events().click([&]() {
         for (auto i = 0; i < SYMBOL_SIZE; i++)
-            bosses[i]->load(paint::image(symbol_af_path[i]));
+            bosses[i]->load(paint::image(boss_af_path[i]));
         memset(bossClear, BOSSES_SIZE, sizeof(int));
+        caculation();
         rightgrp.collocate();
         });
     /***************/
@@ -80,17 +73,28 @@ void NestedGroups::bossGroups() {
 }
 
 void NestedGroups::caculation() {
+    int will{};
+    string willString;
 
+    for (int i = 0; i < BOSSES_SIZE; i++) {
+        if (bossClear[i])
+            will += bossResult[i];
+    }
+    willString = "paid : " + to_string(will);
+    amount->caption(willString);
+}
+
+void NestedGroups::showAll() {
+    caculated.div("horizontal margin=10 gap=3 <value>");
+    amount = new label{ caculated, "paid : 0"};
+    //caculation();
+    caculated["value"] << amount->text_align(align::center, align_v::top);
+    rightgrp["nested3"] << caculated;
+    rightgrp.collocate();
 }
 
 NestedGroups::~NestedGroups() {
-    //dtor
-    delete lab1;
-    delete lab2;
-    delete lab3;
-    delete b1;
-    delete b2;
-    delete b3;
+    delete amount;
     delete allSym;
     delete allBoss;
 }

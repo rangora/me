@@ -26,7 +26,7 @@ class ExternalGroup {
 
     protected:
         label out    {mainform, "this is main"};
-        group extgrp {mainform, "An external <bold=true, color=blue>Group:</>", true};
+        group extgrp {mainform, "<bold=true, color=blue>Bad game</>", true};
         place plc    {mainform};
 
     private:
