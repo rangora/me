@@ -1,24 +1,19 @@
 #include "../include/NestedGroups.h"
 
 NestedGroups::NestedGroups() {
-    lab2 = new label{nested2, "A simple nested group_02:"};
     lab3 = new label{nested3, "A simple nested group_03:"};
-    b2 = new button{nested2, "button2"};
     b3 = new button{nested3, "button6"};
 
     symbolGroups();
+    bossGroups();
     
-    // symbol
-     
-    nested2.div( " margin=3 min=30 gap= 2 all");
+    // symbol   
     nested3.div( " margin=3 min=30 gap= 2 all");
       
     
-    nested2["all"] << *lab2 << *b2;
     nested3["all"] << *lab3 << *b3;
     
     
-    rightgrp["nested2"] << nested2;
     rightgrp["nested3"] << nested3;
 }
 
@@ -34,41 +29,58 @@ void NestedGroups::symbolGroups() {
         symbolGrp["symbol"] << (*symbols.back());
     }
 
-    /*
-    for (auto iter : symbols) {
-        symbolGrp["symbol"] << *iter;
-    }
-    */
-
     // change all..
     allSym->events().click([&]() {
-
-        for (auto iter : symbols)
-            delete iter;
-
-        symbols.clear();
-        symbols.shrink_to_fit();
-
-        for (auto i = 0; i < SYMBOL_SIZE; i++) {
-            symbols.emplace_back(new picture{ symbolGrp });
-            symbols.back()->load(paint::image(symbol_af_path[i])); 
-            symbolGrp["symbol"] << (*symbols.back());
-        }
-        cout << symbols.size() << endl;
-        /*
-        for(auto iter : symbols) {
-            symbolGrp["symbol"] << *iter;
-         //    iter-> = new picture{symbolGrp};
-           }
-        */
-        rightgrp["nested1"] << symbolGrp;
+        for (auto i = 0; i < SYMBOL_SIZE; i++) 
+            symbols[i]->load(paint::image(symbol_af_path[i]));
+        rightgrp.collocate();
         });
-    cout << symbols.size() << endl;
-    //
-
 
     symbolGrp["box"] << *allSym;
     rightgrp["nested1"] << symbolGrp;
+}
+
+void NestedGroups::bossGroups() {
+    allBoss = new button{ bossGrp, "all done" };
+
+    bossGrp.div("< horizontal margin=10 gap=3 arrange=[34,34,34,34,34,34] <symbol> |"
+        " horizontal margin=10 gap=3 arrange=[34,34,34,34,34,34] <box> >");
+
+    for (auto i = 0; i < SYMBOL_SIZE; i++) {
+        bosses.emplace_back(new picture{ bossGrp });
+        bosses.back()->load(paint::image(symbol_be_path[i]));
+        bossGrp["symbol"] << (*bosses.back());      
+    }
+
+    // click events.. //
+    bosses[0]->events().click([&]() {
+        if (!bossClear[0]) {
+            bosses[0]->load(paint::image(symbol_af_path[0]));
+            bossClear[0] = 1;
+        }
+        else {
+            bosses[0]->load(paint::image(symbol_be_path[0]));
+            bossClear[0] = 0;
+        }
+        rightgrp.collocate();
+        });
+    /******************/
+
+    // all clear.. //
+    allBoss->events().click([&]() {
+        for (auto i = 0; i < SYMBOL_SIZE; i++)
+            bosses[i]->load(paint::image(symbol_af_path[i]));
+        memset(bossClear, BOSSES_SIZE, sizeof(int));
+        rightgrp.collocate();
+        });
+    /***************/
+
+    bossGrp["box"] << *allBoss;
+    rightgrp["nested2"] << bossGrp;
+}
+
+void NestedGroups::caculation() {
+
 }
 
 NestedGroups::~NestedGroups() {
@@ -80,4 +92,5 @@ NestedGroups::~NestedGroups() {
     delete b2;
     delete b3;
     delete allSym;
+    delete allBoss;
 }
